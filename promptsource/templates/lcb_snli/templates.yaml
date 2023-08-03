@@ -1,0 +1,85 @@
+dataset: lcb_snli
+templates:
+
+  57b26e3c-36b3-400b-9d9e-b4121dce6b4e: !Template
+    answer_choices: Yes ||| No
+    id: 57b26e3c-36b3-400b-9d9e-b4121dce6b4e
+    jinja: "Premise:\n{{premise}}\n\nHypothesis:\n{{hypothesis}}\n\n\nAre the premise and hypothesis logically independent? |||{{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: dependence-full
+    reference: ''
+  4a4b4e3e-01c9-46f6-8bb9-57b0c8b67dd3: !Template
+    answer_choices: Yes ||| No
+    id: 4a4b4e3e-01c9-46f6-8bb9-57b0c8b67dd3
+    jinja: "Hypothesis:\n{{hypothesis}}\n\n\nAre the premise and hypothesis logically independent? |||{{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: dependence-hypothesis_only
+    reference: ''
+
+
+  fb2b14e7-d321-4686-aad9-07cc13392d63: !Template
+    answer_choices: true ||| false
+    id: fb2b14e7-d321-4686-aad9-07cc13392d63
+    jinja: "The sentence \"{{premise}}\" is true.\nThe sentence \"{{hypothesis}}\" is |||{{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: truth-full
+    reference: ''
+  915df40e-8e58-44f3-8e7d-e355c40dde2a: !Template
+    answer_choices: true ||| false
+    id: 915df40e-8e58-44f3-8e7d-e355c40dde2a
+    jinja: "The sentence \"{{hypothesis}}\" is |||{{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: truth-hypothesis_only
+    reference: ''
+  7f7ebfa0-6bdf-4609-a671-217c351c519f: !Template
+    answer_choices: true ||| false
+    id: 7f7ebfa0-6bdf-4609-a671-217c351c519f
+    jinja: "The sentence \"{{premise}}\" is false.\nThe sentence \"{{hypothesis}}\" is |||{{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: truth-premise_negated
+    reference: ''
+
+
+  946ad2b8-5cf0-4ed8-9d12-daffbbee92b7: !Template
+    answer_choices: Yes ||| No
+    id: 946ad2b8-5cf0-4ed8-9d12-daffbbee92b7
+    jinja: "You are presented with an image with the following caption: {{premise}}. Is the caption correct? ||| {{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: caption
+    reference: ''
