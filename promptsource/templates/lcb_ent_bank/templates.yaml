@@ -1,10 +1,15 @@
 dataset: lcb_ent_bank
 templates:
   af1fa9cd-a73a-40f2-8fc9-0d2e5e97dcad: !Template
-    answer_choices: True ||| False
+    answer_choices: False ||| True
     id: af1fa9cd-a73a-40f2-8fc9-0d2e5e97dcad
-    jinja: "{{ question }}\n\nPremises:\n{% for p,t in zip(premises, truths) %}{{ p }} ({{ t }})\n{% endfor %}\n\n
-    Hypothesis:\n{{ hypothesis }} ||| ({{ answer_choices[label] }})"
+    jinja: "
+Given the following question \"{{ question }}\" and considering that:\n\
+{% for p,t in zip(premises, truths) %}\
+The sentence \"{{ p }}\" is {{ t }}.\n\
+{% endfor %}\
+\n\
+Then, the sentence \"{{ hypothesis }}\" would be ||| ({{ answer_choices[label] }})"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
@@ -12,12 +17,20 @@ templates:
       metrics:
         - Accuracy
       original_task: true
-    name: LCB Entailment Bank 1
+    name: truth
     reference: ''
+
   1579a1aa-c28d-46ca-aa23-42efa68b99fe: !Template
-    answer_choices: yes ||| no
+    answer_choices: no ||| yes
     id: 1579a1aa-c28d-46ca-aa23-42efa68b99fe
-    jinja: '{{ question }}\n\nPremises:\n{{ premises | join("\n") }}\n\nHypothesis:\n{{ hypothesis }}\n\n
+    jinja: '{{ question }}\n
+    \n
+    Premises:\n
+    {{ premises | join("\n") }}\n
+    \n
+    Hypothesis:\n
+    {{ hypothesis }}\n
+    \n
     Does the hypothesis logically follow from the premises? ||| {{ answer_choices[label] }}'
     metadata: !TemplateMetadata
       choices_in_prompt: false
@@ -26,12 +39,20 @@ templates:
       metrics:
         - Accuracy
       original_task: true
-    name: LCB Entailment Bank 2
+    name: logically_follow
     reference: ''
+
   87573a22-44f3-4817-b733-8312b37961a5: !Template
-    answer_choices: yes ||| no
+    answer_choices: no ||| yes
     id: 87573a22-44f3-4817-b733-8312b37961a5
-    jinja: '{{ question }}\n\nPremises:\n{{ premises | join("\n") }}\n\nHypothesis:\n{{ hypothesis }}\n\n
+    jinja: '{{ question }}\n
+    \n
+    Premises:\n
+    {{ premises | join("\n") }}\n
+    \n
+    Hypothesis:\n
+    {{ hypothesis }}\n
+    \n
     Is the hypothesis entailed by the premises? ||| {{ answer_choices[label] }}'
     metadata: !TemplateMetadata
       choices_in_prompt: false
@@ -40,12 +61,20 @@ templates:
       metrics:
         - Accuracy
       original_task: true
-    name: LCB Entailment Bank 3
+    name: entailed_by
     reference: ''
+
   9e246e9a-9ba7-4967-8311-65593df89117: !Template
     answer_choices: entailment ||| neutral
     id: 87573a22-44f3-4817-b733-8312b37961a5
-    jinja: '{{ question }}\n\nPremises:\n{{ premises | join("\n") }}\n\nHypothesis:\n{{ hypothesis }}\n\n
+    jinja: '{{ question }}\n
+    \n
+    Premises:\n
+    {{ premises | join("\n") }}\n
+    \n
+    Hypothesis:\n
+    {{ hypothesis }}\n
+    \n
     What relationship does the hypothesis have with the premises? ||| {{ answer_choices[label] }}'
     metadata: !TemplateMetadata
       choices_in_prompt: false
@@ -54,5 +83,5 @@ templates:
       metrics:
         - Accuracy
       original_task: true
-    name: LCB Entailment Bank 4
+    name: entailment_relation
     reference: ''
