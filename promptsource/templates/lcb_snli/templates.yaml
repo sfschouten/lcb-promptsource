@@ -32,7 +32,7 @@ templates:
   fb2b14e7-d321-4686-aad9-07cc13392d63: !Template
     answer_choices: false ||| true
     id: fb2b14e7-d321-4686-aad9-07cc13392d63
-    jinja: "The sentence \"{{premise}}\" is true.\nThe sentence \"{{hypothesis}}\" is ||| {{ answer_choices[label] }}"
+    jinja: "The description \"{{ premise }}\" is true.\n Therefore, \"{{ hypothesis }}\" must be ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
@@ -45,7 +45,7 @@ templates:
   915df40e-8e58-44f3-8e7d-e355c40dde2a: !Template
     answer_choices: false ||| true
     id: 915df40e-8e58-44f3-8e7d-e355c40dde2a
-    jinja: "The sentence \"{{hypothesis}}\" is |||{{ answer_choices[label] }}"
+    jinja: "Therefore, \"{{ hypothesis }}\" must be ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
@@ -58,7 +58,7 @@ templates:
   7f7ebfa0-6bdf-4609-a671-217c351c519f: !Template
     answer_choices: false ||| true
     id: 7f7ebfa0-6bdf-4609-a671-217c351c519f
-    jinja: "The sentence \"{{premise}}\" is false.\nThe sentence \"{{hypothesis}}\" is ||| {{ answer_choices[label] }}"
+    jinja: "The description \"{{ premise }}\" is false.\n Therefore, \"{{ hypothesis }}\" must be ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
@@ -69,17 +69,3 @@ templates:
     name: truth-premise_negated
     reference: ''
 
-
-  946ad2b8-5cf0-4ed8-9d12-daffbbee92b7: !Template
-    answer_choices: No ||| Yes
-    id: 946ad2b8-5cf0-4ed8-9d12-daffbbee92b7
-    jinja: "You are presented with an image with the following caption: {{premise}}. Is the caption correct? ||| {{ answer_choices[label] }}"
-    metadata: !TemplateMetadata
-      choices_in_prompt: false
-      languages:
-        - en
-      metrics:
-        - Accuracy
-      original_task: true
-    name: caption
-    reference: ''
