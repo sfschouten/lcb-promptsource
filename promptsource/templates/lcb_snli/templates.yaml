@@ -32,7 +32,7 @@ templates:
   fb2b14e7-d321-4686-aad9-07cc13392d63: !Template
     answer_choices: false ||| true
     id: fb2b14e7-d321-4686-aad9-07cc13392d63
-    jinja: "The description \"{{ premise }}\" is true.\n Therefore, \"{{ hypothesis }}\" must be ||| {{ answer_choices[label] }}"
+    jinja: "The description \"{{ premise }}\" is true.\nTherefore, \"{{ hypothesis }}\" must be ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
@@ -58,7 +58,7 @@ templates:
   7f7ebfa0-6bdf-4609-a671-217c351c519f: !Template
     answer_choices: false ||| true
     id: 7f7ebfa0-6bdf-4609-a671-217c351c519f
-    jinja: "The description \"{{ premise }}\" is false.\n Therefore, \"{{ hypothesis }}\" must be ||| {{ answer_choices[label] }}"
+    jinja: "The description \"{{ premise }}\" is false.\nTherefore, \"{{ hypothesis }}\" must be ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
