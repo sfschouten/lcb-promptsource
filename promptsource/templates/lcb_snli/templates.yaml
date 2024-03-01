@@ -1,6 +1,57 @@
 dataset: lcb_snli
 templates:
 
+  324ad05b-5c2b-457d-b47d-aaa788c2836c: !Template
+    answer_choices: incorrect ||| correct
+    id: 324ad05b-5c2b-457d-b47d-aaa788c2836c
+    jinja: "\
+You are looking at a picture.
+Describing it as \"{{ premise }}\" is correct.
+Saying (about the picture) that: \"{{ hypothesis }}\" is ||| {{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: pic-full
+    reference: ''
+  6aa14083-1841-42fb-b536-788dbaf55d0e: !Template
+    answer_choices: incorrect ||| correct
+    id: 6aa14083-1841-42fb-b536-788dbaf55d0e
+    jinja: "\
+You are looking at a picture.
+Saying (about the picture) that: \"{{ hypothesis }}\" is ||| {{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: pic-hypothesis_only
+    reference: ''
+  ce662f90-776e-46e3-ae53-4ddc0f80fb35: !Template
+    answer_choices: incorrect ||| correct
+    id: ce662f90-776e-46e3-ae53-4ddc0f80fb35
+    jinja: "\
+You are looking at a picture.
+Describing it as \"{{ premise }}\" is incorrect.
+Saying (about the picture) that: \"{{ hypothesis }}\" is ||| {{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: pic-premise_negated
+    reference: ''
+
+
+
+
   57b26e3c-36b3-400b-9d9e-b4121dce6b4e: !Template
     answer_choices: No ||| Yes
     id: 57b26e3c-36b3-400b-9d9e-b4121dce6b4e
