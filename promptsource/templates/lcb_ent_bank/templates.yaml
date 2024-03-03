@@ -1,15 +1,14 @@
 dataset: lcb_ent_bank
 templates:
   af1fa9cd-a73a-40f2-8fc9-0d2e5e97dcad: !Template
-    answer_choices: False ||| True
+    answer_choices: incorrect ||| correct
     id: af1fa9cd-a73a-40f2-8fc9-0d2e5e97dcad
     jinja: "
-Given the following question \"{{ question }}\" and considering that:\n\
 {% for p,t in zip(premises, truths) %}\
-The sentence \"{{ p }}\" is {{ t }}.\n\
+\"{{ p }}\" is {{ t }}.\n\
 {% endfor %}\
 \n\
-Then, the sentence \"{{ hypothesis }}\" would be ||| ({{ answer_choices[label] }})"
+Answering \"{{ question }}\" with \"({{ answerKey }}) {{ answer }}\" is ||| ({{ answer_choices[label] }})"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
@@ -20,18 +19,16 @@ Then, the sentence \"{{ hypothesis }}\" would be ||| ({{ answer_choices[label] }
     name: truth
     reference: ''
 
-  1579a1aa-c28d-46ca-aa23-42efa68b99fe: !Template
-    answer_choices: no ||| yes
-    id: 1579a1aa-c28d-46ca-aa23-42efa68b99fe
-    jinja: '{{ question }}\n
-    \n
-    Premises:\n
-    {{ premises | join("\n") }}\n
-    \n
-    Hypothesis:\n
-    {{ hypothesis }}\n
-    \n
-    Does the hypothesis logically follow from the premises? ||| {{ answer_choices[label] }}'
+  39f34a10-fe49-4ca8-a998-9457d5781f05: !Template
+    answer_choices: False ||| True
+    id: 39f34a10-fe49-4ca8-a998-9457d5781f05
+    jinja: "
+Given the following question \"{{ question }}\" and considering that:\n\
+{% for p,t in zip(premises, truths) %}\
+The sentence \"{{ p }}\" is {{ t }}.\n\
+{% endfor %}\
+\n\
+Would the sentence \"{{ hypothesis }}\" be True or False?  ||| ({{ answer_choices[label] }})"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
@@ -39,49 +36,5 @@ Then, the sentence \"{{ hypothesis }}\" would be ||| ({{ answer_choices[label] }
       metrics:
         - Accuracy
       original_task: true
-    name: logically_follow
-    reference: ''
-
-  87573a22-44f3-4817-b733-8312b37961a5: !Template
-    answer_choices: no ||| yes
-    id: 87573a22-44f3-4817-b733-8312b37961a5
-    jinja: '{{ question }}\n
-    \n
-    Premises:\n
-    {{ premises | join("\n") }}\n
-    \n
-    Hypothesis:\n
-    {{ hypothesis }}\n
-    \n
-    Is the hypothesis entailed by the premises? ||| {{ answer_choices[label] }}'
-    metadata: !TemplateMetadata
-      choices_in_prompt: false
-      languages:
-        - en
-      metrics:
-        - Accuracy
-      original_task: true
-    name: entailed_by
-    reference: ''
-
-  9e246e9a-9ba7-4967-8311-65593df89117: !Template
-    answer_choices: entailment ||| neutral
-    id: 87573a22-44f3-4817-b733-8312b37961a5
-    jinja: '{{ question }}\n
-    \n
-    Premises:\n
-    {{ premises | join("\n") }}\n
-    \n
-    Hypothesis:\n
-    {{ hypothesis }}\n
-    \n
-    What relationship does the hypothesis have with the premises? ||| {{ answer_choices[label] }}'
-    metadata: !TemplateMetadata
-      choices_in_prompt: false
-      languages:
-        - en
-      metrics:
-        - Accuracy
-      original_task: true
-    name: entailment_relation
+    name: truth-question
     reference: ''
