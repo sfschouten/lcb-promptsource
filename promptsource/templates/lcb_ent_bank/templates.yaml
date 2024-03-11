@@ -5,10 +5,10 @@ templates:
     id: af1fa9cd-a73a-40f2-8fc9-0d2e5e97dcad
     jinja: "
 {% for p,t in zip(premises, truths) %}\
-\"{{ p }}\" is {{ t }}.\n\
+\"{{ p }}\" is {{ answer_choices[t] }}.\n\
 {% endfor %}\
 \n\
-Answering \"{{ question }}\" with \"({{ answerKey }}) {{ answer }}\" is ||| ({{ answer_choices[label] }})"
+Answering \"{{ question }}\" with \"{{ answer }}\" is ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
