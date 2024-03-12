@@ -5,7 +5,7 @@ templates:
     id: af1fa9cd-a73a-40f2-8fc9-0d2e5e97dcad
     jinja: "
 {% for p,t in zip(premises, truths) %}\
-\"{{ p }}\" is {{ answer_choices[t] }}.\n\
+The statement \"{{ p }}\" is {{ answer_choices[t] }}.\n\
 {% endfor %}\
 \n\
 Answering \"{{ question }}\" with \"{{ answer }}\" is ||| {{ answer_choices[label] }}"
@@ -20,15 +20,15 @@ Answering \"{{ question }}\" with \"{{ answer }}\" is ||| {{ answer_choices[labe
     reference: ''
 
   39f34a10-fe49-4ca8-a998-9457d5781f05: !Template
-    answer_choices: False ||| True
+    answer_choices: incorrect ||| correct
     id: 39f34a10-fe49-4ca8-a998-9457d5781f05
     jinja: "
-Given the following question \"{{ question }}\" and considering that:\n\
+Question: \"{{ question }}\" \n\n\
 {% for p,t in zip(premises, truths) %}\
-The sentence \"{{ p }}\" is {{ t }}.\n\
+The statement \"{{ p }}\" is {{ answer_choices[t] }}.\n\
 {% endfor %}\
 \n\
-Would the sentence \"{{ hypothesis }}\" be True or False?  ||| ({{ answer_choices[label] }})"
+Answering the question with \"{{ answer }}\" is ||| ({{ answer_choices[label] }})"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
