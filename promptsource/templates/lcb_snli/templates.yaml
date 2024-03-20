@@ -5,8 +5,8 @@ templates:
     answer_choices: incorrect ||| correct
     id: 324ad05b-5c2b-457d-b47d-aaa788c2836c
     jinja: "\
-You are looking at a picture.
-Describing it as \"{{ premise }}\" is correct.
+You are looking at a picture.\n\
+Describing it as \"{{ premise }}\" is correct.\n\
 Saying (about the picture) that: \"{{ hypothesis }}\" is ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
@@ -21,7 +21,7 @@ Saying (about the picture) that: \"{{ hypothesis }}\" is ||| {{ answer_choices[l
     answer_choices: incorrect ||| correct
     id: 6aa14083-1841-42fb-b536-788dbaf55d0e
     jinja: "\
-You are looking at a picture.
+You are looking at a picture.\n\
 Saying (about the picture) that: \"{{ hypothesis }}\" is ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
@@ -36,8 +36,8 @@ Saying (about the picture) that: \"{{ hypothesis }}\" is ||| {{ answer_choices[l
     answer_choices: incorrect ||| correct
     id: ce662f90-776e-46e3-ae53-4ddc0f80fb35
     jinja: "\
-You are looking at a picture.
-Describing it as \"{{ premise }}\" is incorrect.
+You are looking at a picture.\n\
+Describing it as \"{{ premise }}\" is incorrect.\n\
 Saying (about the picture) that: \"{{ hypothesis }}\" is ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
