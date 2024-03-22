@@ -23,12 +23,12 @@ Answering \"{{ question }}\" with \"{{ answer }}\" is ||| {{ answer_choices[labe
     answer_choices: incorrect ||| correct
     id: 39f34a10-fe49-4ca8-a998-9457d5781f05
     jinja: "
-Question: \"{{ question }}\" \n\n\
+Question: \"{{ question }}\" \n\
 {% for p,t in zip(premises, truths) %}\
 The statement \"{{ p }}\" is {{ answer_choices[t] }}.\n\
 {% endfor %}\
 \n\
-Answering the question with \"{{ answer }}\" is ||| ({{ answer_choices[label] }})"
+Answering the question with \"{{ answer }}\" is ||| {{ answer_choices[label] }}"
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
