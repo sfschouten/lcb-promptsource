@@ -38,3 +38,23 @@ Answering the question with \"{{ answer }}\" is ||| {{ answer_choices[label] }}"
       original_task: true
     name: truth-question
     reference: ''
+
+  440a4d95-df70-46fc-9852-4c9e9c82a5ea: !Template
+    answer_choices: incorrect ||| correct
+    id: 440a4d95-df70-46fc-9852-4c9e9c82a5ea
+    jinja: "
+You are given the following question:\n\
+> {{ question }}\n\
+{% for p,t in zip(premises, truths) %}\
+The statement \"{{ p }}\" is {{ answer_choices[t] }}.\n\
+{% endfor %}\
+Answering the question with \"{{ answer }}\" is ||| {{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+        - en
+      metrics:
+        - Accuracy
+      original_task: true
+    name: truth-question-v3
+    reference: ''
